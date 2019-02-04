@@ -26,7 +26,6 @@ router.get("/", (req, res) => {
     `request recieved by server for popular movies, page ${req.query.pagenum}`
   );
   getPopular(pageNum).then(data => {
-    console.log(data);
     res.send({ response: data });
   });
 });

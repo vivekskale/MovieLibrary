@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import logo from "./logo.svg";
 import Popular from "./components/Popular";
 import Header from "./components/Header"
-import "./App.css";
+import "./App.scss";
 class App extends Component {
   state = {
     movies: [],
