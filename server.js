@@ -5,6 +5,7 @@ const app = express();
 
 // Set up routes
 const getPopularMovies = require("./routes/api/getPopularMovies");
+const getConfiguration = require("./routes/api/getConfiguration");
 
 // Body Parser Middleware
 app.use(bodyParser.json());
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/getPopularMovies", getPopularMovies);
+app.use("/api/getConfiguration", getConfiguration);
 
 // Setting up local and live server configuration
 const port = process.env.PORT || 5000;
@@ -21,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 
   // Handle React routing, return all requests to React app
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
