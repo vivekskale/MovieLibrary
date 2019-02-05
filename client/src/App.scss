@@ -1,13 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto');
+/*****Import Custom Fonts******/
 
-
-/****
-
-font-family: 'Montserrat', sans-serif;
-font-family: 'Roboto', sans-serif;
-
-*****/
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,500');
 
 /*******Media Query variables ********/
 
@@ -20,7 +13,6 @@ $breakpoint-lg: 1200px;
 
 $theme-primary: #01D277; /*Lime Green*/
 $theme-dark: #081B23; /*Almost black*/
-$light-heading: #E3F4FC;
 
 
 /*******Global Styles*******/
@@ -50,11 +42,35 @@ p, span {
 
 
 /*******Header Styles*********/
+
 .header-wrapper {
   background-image: url("./img/mobile-header-bg.png"), radial-gradient(312.01px at 53.46% -21.35%, rgba(5, 112, 172, 0.46) 0%, rgba(8, 27, 35, 0) 100%);;
   background-position: center center;
   background-size: cover;
-  height: 20vh;
+  height: 200px;
   display: flex;
   align-items: center;
+}
+
+/********Search Styles********/
+
+.search-wrapper {
+  margin-top: -22px; /**Negative margin equal to half of input height**/
+}
+
+.search-bar input {
+  height: 44px;
+  width: 100%;
+  border-radius: 22px;
+  border: 0;
+  padding: 10px 10px 10px 20px;
+}
+
+.search-bar input::placeholder {
+  color: $theme-primary;
+  font-weight: 500;
+}
+
+.search-bar input:focus {
+  outline: none;
 }

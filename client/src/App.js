@@ -34,9 +34,11 @@ class App extends Component {
       <BrowserRouter>
         <div className="app-wrapper">
           <Header />
-          <Search />
           {this.state.configuration !== null &&
-            <Popular baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} />
+            <React.Fragment>
+              <Search baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} />
+              <Popular baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} />
+            </React.Fragment>
           }
         </div>
       </BrowserRouter>
