@@ -16,7 +16,6 @@ async function getPopular(page) {
 
 // @route   GET api/getPopularMovies
 // @desc    Gets popular movies from "The Movie Database" - https://developers.themoviedb.org/3
-// @access  Public
 
 // Route for getting popular movies
 

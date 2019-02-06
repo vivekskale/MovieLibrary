@@ -54,11 +54,15 @@ p, span {
 
 /********Search Styles********/
 
+.search-bar {
+  position: relative;
+}
+
 .search-wrapper {
   margin-top: -22px; /**Negative margin equal to half of input height**/
 }
 
-.search-bar input {
+.search-input {
   height: 44px;
   width: 100%;
   border-radius: 22px;
@@ -66,11 +70,75 @@ p, span {
   padding: 10px 10px 10px 20px;
 }
 
-.search-bar input::placeholder {
+.search-input::placeholder {
   color: $theme-primary;
   font-weight: 500;
 }
 
-.search-bar input:focus {
+.search-input:focus {
   outline: none;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%); /*Adjust for own height*/
+}
+
+.search-results {
+  padding-top: 44px;
+}
+
+/******Popular Products*******/
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+/*****Movie Thumbnails******/
+
+.movie-thumb-wrapper {
+  margin-bottom: 24px;
+
+  .movie-thumb-img {
+    border-radius: 10px;
+  }
+
+  .movie-name {
+    font-size: 16px;
+    color: #E6F7FF;
+    margin-top: 12px;
+    margin-bottom: 3px;
+  }
+
+  .release-date {
+    font-size: 14px;
+    color: #A1D1E6;
+  }
+
+  .thumb-img-wrapper {
+    position: relative;
+  }
+
+  .rating-badge {
+    position: absolute;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 3px 12px;
+    left: 5px;
+    top: 5px;
+    border-radius: 12px;
+    &.high-rating {
+      background-color: #01D277;
+    }
+    &.medium-rating {
+      background-color: #4902A3;
+    }
+    &.low-rating {
+      background-color: #D1225B;
+    }
+
+  }
 }

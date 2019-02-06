@@ -7,6 +7,7 @@ const app = express();
 const getPopularMovies = require("./routes/api/getPopularMovies");
 const getConfiguration = require("./routes/api/getConfiguration");
 const getMoviesSearch = require("./routes/api/getMoviesSearch");
+const getSingleMovie = require("./routes/api/getSingleMovie");
 
 // Body Parser Middleware
 app.use(bodyParser.json());
@@ -16,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/getPopularMovies", getPopularMovies);
 app.use("/api/getConfiguration", getConfiguration);
 app.use("/api/getMoviesSearch", getMoviesSearch);
+app.use("/api/getSingleMovie", getSingleMovie);
+
 
 // Setting up local and live server configuration
 const port = process.env.PORT || 5000;

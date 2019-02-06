@@ -18,7 +18,6 @@ async function getMoviesSearch(query) {
 
 // @route   GET api/getMoviesSearch
 // @desc    Get movies based on search input from "The Movie Database" - https://developers.themoviedb.org/3
-// @access  Public
 
 // Route for getting API Configuration
 

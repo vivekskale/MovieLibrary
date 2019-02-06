@@ -6,21 +6,22 @@ const dotenv = require("dotenv").config();
 const client_key = process.env.CLIENT_KEY;
 
 // Function for getting popular movies
-async function getConfig() {
+async function getMovie(id) {
     let response = await fetch(
-        `https://api.themoviedb.org/3/configuration?api_key=${client_key}`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${client_key}&language=en-US`
     );
     let data = await response.json();
     return data;
 }
 
-// @route   GET api/getConfiguration
-// @desc    Get API configuration from "The Movie Database" - https://developers.themoviedb.org/3
+// @route   GET api/getSingleMovie
+// @desc    Gets popular movies from "The Movie Database" - https://developers.themoviedb.org/3
 
-// Route for getting API Configuration
+// Route for getting popular movies
 
 router.get("/", (req, res) => {
-    getConfig().then(data => {
+    const id = req.query.id;
+    getMovie(id).then(data => {
         res.send({ response: data });
     });
 });

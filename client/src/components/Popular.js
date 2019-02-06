@@ -33,12 +33,12 @@ class Popular extends Component {
                 <Container>
                     <Row>
                         <Col>
-                            <h2>Popular Movies</h2>
+                            <h2 className="section-title">Popular Movies</h2>
                         </Col>
                     </Row>
                     <Row>
                         {this.state.movies.map((movie => {
-                            return <MovieThumb key={movie.id} name={movie.original_title} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
+                            return <MovieThumb key={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
                         }))}
                     </Row>
                 </Container>

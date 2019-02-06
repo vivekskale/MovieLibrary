@@ -13,7 +13,6 @@ class App extends Component {
   componentDidMount() {
     this.getConfiguration()
       .then(res => {
-        console.log(res);
         this.setState({
           configuration: res.response
         })

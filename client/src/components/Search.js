@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import MovieThumb from "./MovieThumb";
+import searchIcon from "../img/search.png";
+
 import "../App.scss";
 class Search extends Component {
     state = {
@@ -38,7 +40,8 @@ class Search extends Component {
                     <Row>
                         <Col>
                             <div className="search-bar">
-                                <input type="text" placeholder="Search" value={this.state.searchQuery} onChange={this.handleChange} />
+                                <input type="text" placeholder="Search" className="search-input" value={this.state.searchQuery} onChange={this.handleChange} />
+                                <img src={searchIcon} alt="search icon" className="search-icon" />
                             </div>
                         </Col>
                     </Row>
@@ -47,7 +50,7 @@ class Search extends Component {
                             <Col><p>No results found for "{this.state.searchQuery}"</p></Col>
                         }
                         {this.state.searchResults && this.state.searchResults.map((movie) => {
-                            return <MovieThumb key={movie.id} name={movie.original_title} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
+                            return <MovieThumb key={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
                         })}
                     </Row>
                 </Container>
