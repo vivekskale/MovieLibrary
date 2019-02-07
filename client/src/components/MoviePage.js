@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import backArrow from "../img/back-arrow.png";
 import { format } from "date-fns";
+import Spinner from "./Spinner";
 import "../App.scss";
 class MoviePage extends Component {
     state = {
@@ -60,7 +61,14 @@ class MoviePage extends Component {
         if (this.state.movieInfo === "") {
             //Loading screen until API has finished fetching movie data
             return (<div className="movie-page-wrapper">
-                <p>Loading Animation here</p>
+                <Container>
+                    <Row>
+                        <Col>
+                            <Spinner />
+                            <p className="text-center">Loading Movie Information...</p>
+                        </Col>
+                    </Row>
+                </Container>
             </div>)
         } else {
             //Display Movie Information
@@ -98,12 +106,12 @@ class MoviePage extends Component {
             return (
                 <div className="movie-page-wrapper">
                     <div className="movie-header-wrapper" style={movieBg}>
-                        <img src={backArrow} alt="Back to Homepage" className="movie-back-arrow" onClick={() => { this.goBack() }} />
+                        <img src={backArrow} alt="Back to Homepage" className="movie-back-arrow pointer" onClick={() => { this.goBack() }} />
                     </div>
                     <Container>
                         <Row>
                             <Col xs={5}>
-                                <img src={posterImg} alt={title + " poster image"} className="img-fluid movie-pg-poster pointer" />
+                                <img src={posterImg} alt={title + " poster image"} className="img-fluid movie-pg-poster" />
                             </Col>
                             <Col xs={7}>
                                 <h2 className="movie-pg-title">{title}</h2>

@@ -24,8 +24,8 @@ const MovieThumb = props => {
     }
 
     return (
-        <Col xs={6} lg={3} className="movie-thumb-wrapper">
-            <div className="thumb-img-wrapper" onClick={() => { props.goToPage("/movie/" + encodeURI(name) + "/" + props.id) }}>
+        <Col xs={6} lg={3} className="movie-thumb-wrapper pointer" onClick={() => { props.goToPage("/movie/" + encodeURI(name) + "/" + props.id) }}>
+            <div className="thumb-img-wrapper">
                 <img src={posterImg} alt={name + " Poster"} className="img-fluid movie-thumb-img" />
                 <RatingBadge />
             </div>
