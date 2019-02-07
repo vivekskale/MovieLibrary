@@ -9,7 +9,7 @@ import "../App.scss";
 
 const MovieThumb = props => {
 
-    const posterImg = props.baseUrl + props.smPosterSize + props.posterPath;
+    const posterImg = props.posterPath === null ? "https://via.placeholder.com/342x513.png?text=No+Poster+Available" : props.baseUrl + props.smPosterSize + props.posterPath;
     const { name, date } = props;
     const formattedDate = format(date.replace("-", "/"), "MMMM YYYY");
     const ratingPercent = props.voteRating * 10;
@@ -24,7 +24,7 @@ const MovieThumb = props => {
     }
 
     return (
-        <Col xs={6} lg={3} className="movie-thumb-wrapper pointer" onClick={() => { props.goToPage("/movie/" + encodeURI(name) + "/" + props.id) }}>
+        <Col xs={6} md={4} lg={3} className="movie-thumb-wrapper pointer" onClick={() => { props.goToPage("/movie/" + encodeURIComponent(name) + "/" + props.id) }}>
             <div className="thumb-img-wrapper">
                 <img src={posterImg} alt={name + " Poster"} className="img-fluid movie-thumb-img" />
                 <RatingBadge />

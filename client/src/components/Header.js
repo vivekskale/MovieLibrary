@@ -11,7 +11,7 @@ const Header = props => {
         <header className="App-header">
             <Container>
                 <Row className="header-wrapper">
-                    <Col className="text-center">
+                    <Col className="logo-col">
                         <img src={logo} alt="The Move Database Logo" />
                     </Col>
                 </Row>

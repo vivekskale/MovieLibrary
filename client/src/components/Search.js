@@ -45,14 +45,23 @@ class Search extends Component {
                             </div>
                         </Col>
                     </Row>
-                    <Row className="search-results">
-                        {(this.state.searchQuery && this.state.searchResults) && (this.state.searchQuery.length > 0 && this.state.searchResults.length === 0) &&
-                            <Col><p>No results found for "{this.state.searchQuery}"</p></Col>
-                        }
-                        {this.state.searchResults && this.state.searchResults.map((movie) => {
-                            return <MovieThumb key={movie.id} id={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
-                        })}
-                    </Row>
+                    {(this.state.searchQuery && this.state.searchResults) && (this.state.searchQuery.length > 0 && this.state.searchResults.length === 0) &&
+                        <Row className="search-prefix">
+                            <Col><h2 className="text-left">No results found for "{this.state.searchQuery}"</h2></Col>
+                        </Row>
+                    }
+                    {(this.state.searchQuery && this.state.searchResults) && (this.state.searchQuery.length > 0 && this.state.searchResults.length !== 0) &&
+                        <Row className="search-prefix">
+                            <Col><h2 className="text-left">Search results for "{this.state.searchQuery}"</h2></Col>
+                        </Row>
+                    }
+                    {this.state.searchResults && this.state.searchQuery.length > 0 &&
+                        <Row className="search-results">
+                            {this.state.searchResults.map((movie) => {
+                                return <MovieThumb key={movie.id} id={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} goToPage={this.props.goToPage} />
+                            })}
+                        </Row>
+                    }
                 </Container>
             </section>
         )

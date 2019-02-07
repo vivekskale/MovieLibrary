@@ -36,9 +36,27 @@ h2 {
   font-size: 20px;
 }
 
+@media (min-width: $breakpoint-md) {
+  h2 {
+    font-size: 28px;
+  }
+}
+
 p, span {
   color: #9FBBC7;
 }
+
+.primary-btn {
+  color: #ffffff;
+  border: 0;
+  padding: 12px 23px;
+  transition: all 0.3s ease;
+  background-color: #0f4d69;
+  &:hover {
+    background-color: #0d3f57;
+  }
+}
+
 
 /******Utilities******/
 
@@ -49,7 +67,6 @@ p, span {
 .pointer {
   cursor: pointer;
 }
-
 
 /*******Header Styles*********/
 
@@ -62,14 +79,58 @@ p, span {
   align-items: center;
 }
 
+.logo-col {
+  text-align: center;
+}
+
+@media (min-width: $breakpoint-md) {
+
+  .App-header {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .header-wrapper {
+    background-image: none !important;
+    background-size: contain;
+    height: 80px;
+  }
+
+  .logo-col {
+    text-align: left;
+  }
+}
+
+
 /********Search Styles********/
 
 .search-bar {
   position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search-prefix {
+  margin-top: 60px;
 }
 
 .search-wrapper {
   margin-top: -22px; /**Negative margin equal to half of input height**/
+}
+
+@media (min-width: $breakpoint-md) {
+  .search-wrapper {
+    margin-top: -62px;
+    text-align: right;
+  }
+
+  .search-bar {
+    margin: unset;
+    display: inline-block;
+  }
+
+  .search-input {
+    min-width: 360px;
+  }
 }
 
 .search-input {
@@ -102,8 +163,28 @@ p, span {
 
 /******Popular Products*******/
 
-.section-title {
+.section-title-row {
+  margin-top: 40px;
   margin-bottom: 20px;
+}
+
+@media (min-width: $breakpoint-md) {
+  .section-title-row  {
+    margin-top: 75px;
+    margin-bottom: 40px;
+  }
+}
+
+.navigation-row {
+  padding-bottom: 30px;
+
+  .prev-btn {
+    float: left;
+  }
+  
+  .next-btn {
+    float: right;
+  }
 }
 
 /*****Movie Thumbnails******/
@@ -129,6 +210,10 @@ p, span {
 
   .thumb-img-wrapper {
     position: relative;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: translateY(-2%);
+    }
   }
 
   .rating-badge {
