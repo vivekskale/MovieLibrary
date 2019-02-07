@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "../App.scss";
@@ -8,9 +6,16 @@ import "../App.scss";
 const FourOhFour = props => {
   return (
     <div className="fourohfour-wrapper">
-      <p>
-        Try heading <Link to={"/"}>home</Link>
-      </p>
+      <Container>
+        <Row>
+          <Col className="text-center">
+            <h3 className="fourohfour-heading mt-5">
+              Uh oh. There's nothing here. Try heading <Link to={"/"}>home</Link> instead!
+            </h3>
+          </Col>
+        </Row>
+      </Container>
+
     </div>
   )
 }

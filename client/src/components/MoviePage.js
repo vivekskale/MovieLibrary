@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import backArrow from "../img/back-arrow.png";
 import { format } from "date-fns";

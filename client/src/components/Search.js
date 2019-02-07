@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import MovieThumb from "./MovieThumb";
 import searchIcon from "../img/search.png";
