@@ -101,7 +101,8 @@ class MoviePage extends Component {
 
             //Define Poster Size
             const posterUrl = this.state.movieInfo.poster_path;
-            const posterImg = baseUrl + mdPosterSize + posterUrl;
+            const posterImg = posterUrl === null ? "https://via.placeholder.com/342x513.png?text=No+Poster+Available" : baseUrl + mdPosterSize + posterUrl;
+
 
             return (
                 <div className="movie-page-wrapper">
@@ -115,7 +116,7 @@ class MoviePage extends Component {
                             </Row>
                         </Container>
                     </div>
-                    <Container fluid="true" className="d-none d-md-block desktop-movie-details">
+                    <Container fluid={true} className="d-none d-md-block desktop-movie-details">
                         <Container>
                             <Row>
                                 <Col>
