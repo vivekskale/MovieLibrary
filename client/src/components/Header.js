@@ -9,7 +9,7 @@ const Header = props => {
         <header className="App-header">
             <Container>
                 <Row className="header-wrapper">
-                    <Col className="logo-col" md={6}>
+                    <Col className="logo-col" lg={6}>
                         <Link to={"/"}>
                             <img src={logo} alt="The Move Database Logo" className="pointer logo-img" />
                         </Link>
