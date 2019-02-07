@@ -107,13 +107,31 @@ class MoviePage extends Component {
                 <div className="movie-page-wrapper">
                     <div className="movie-header-wrapper" style={movieBg}>
                         <img src={backArrow} alt="Back to Homepage" className="movie-back-arrow pointer" onClick={() => { this.goBack() }} />
+                        <Container className="d-none d-md-block">
+                            <Row>
+                                <Col>
+                                    <h1 className="movie-pg-desktop-title">{title}</h1>
+                                </Col>
+                            </Row>
+                        </Container>
                     </div>
-                    <Container>
+                    <Container fluid="true" className="d-none d-md-block desktop-movie-details">
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <p className="mb-0">{releaseYearFormatted}<span className="details-divider">|</span>{ratingPercent}% User Score <span className="details-divider">|</span> <RuntimeHoursMins /></p>
+                                </Col>
+                            </Row>
+                        </Container>
+
+                    </Container>
+
+                    <Container className="d-md-none">
                         <Row>
-                            <Col xs={5}>
+                            <Col xs={5} className="d-md-none">
                                 <img src={posterImg} alt={title + " poster image"} className="img-fluid movie-pg-poster" />
                             </Col>
-                            <Col xs={7}>
+                            <Col xs={7} md={12}>
                                 <h2 className="movie-pg-title">{title}</h2>
                                 <div className="movie-details">
                                     <p>{releaseYearFormatted} • {ratingPercent}% User Score</p>
@@ -121,17 +139,23 @@ class MoviePage extends Component {
                                 </div>
                             </Col>
                         </Row>
-                        <Row>
+                    </Container>
+
+                    <Container className="pb-5">
+                        <Row className="d-md-none">
                             <Col>
                                 <hr className="movie-pg-section-divider" />
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
+                            <Col xs={12} md={8} lg={9}>
                                 <h3 className="movie-overview-title">Overview</h3>
                                 <p className="movie-description">
                                     {movieOverview}
                                 </p>
+                            </Col>
+                            <Col md={4} lg={3} className="d-none d-md-block">
+                                <img src={posterImg} alt={title + " poster image"} className="img-fluid movie-pg-poster" />
                             </Col>
                         </Row>
                     </Container>

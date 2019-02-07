@@ -244,11 +244,88 @@ p, span {
   height: 245px;
   background-size: cover;
   background-position: center center;
+  position: relative;
+}
+
+
+.movie-pg-desktop-title {
+  font-size: 45px;
+  color: $theme-dark;
+  background-color: #fff;
+  padding: 15px 35px;
+  display: inline-block;
+  position: relative;
+}
+
+.movie-pg-desktop-title:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 95%;
+  height: 20px;
+  background-color: $theme-primary;
+  bottom: -10px;
+}
+
+@media (min-width: $breakpoint-md) {
+    .movie-pg-desktop-title {
+      font-size: 60px;
+      color: $theme-dark;
+      background-color: #fff;
+      padding: 30px 60px;
+      display: inline-block;
+      position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 95%;
+      height: 30px;
+      background-color: $theme-primary;
+      bottom: -15px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  .movie-header-wrapper {
+    height: 350px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .movie-header-wrapper {
+    height: 500px;
+  }
+}
+
+.desktop-movie-details {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  & p, span {
+    color: #fff;
+    opacity: 0.9;
+  }
+  .details-divider {
+    color: $theme-primary;
+    padding: 0 20px;
+    opacity: 1;
+  }
+}
+
+.details-divider {
+  color: $theme-primary;
+  padding: 0 20px;
 }
 
 .movie-back-arrow {
-  margin-left: 15px;
-  margin-top: 30px;
+  position: absolute;
+  top: 30px;
+  left: 15px;
 }
 
 .movie-pg-poster {
@@ -256,6 +333,13 @@ p, span {
   border-radius: 10px;
   margin-top: -30%;
 }
+
+@media (min-width: $breakpoint-sm) {
+  .movie-pg-poster {
+    margin-top: 60px;
+  }
+}
+
 
 .movie-pg-title {
   margin-top: 20px;
@@ -282,6 +366,12 @@ p, span {
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .movie-overview-title {
+    margin-top: 60px;
+  }
 }
 
 .movie-description {
