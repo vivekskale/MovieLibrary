@@ -27,6 +27,10 @@ class App extends Component {
     return body;
   }
 
+  goToPage = (page) => {
+    this.props.history.push(page);
+  }
+
   render() {
 
     return (
@@ -35,8 +39,8 @@ class App extends Component {
           <Header />
           {this.state.configuration !== null &&
             <React.Fragment>
-              <Search baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} />
-              <Popular baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} />
+              <Search baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} goToPage={this.goToPage} />
+              <Popular baseUrl={this.state.configuration.images.secure_base_url} smPosterSize={this.state.configuration.images.poster_sizes[3]} goToPage={this.goToPage} />
             </React.Fragment>
           }
         </div>

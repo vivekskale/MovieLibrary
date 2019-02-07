@@ -38,7 +38,7 @@ class Popular extends Component {
                     </Row>
                     <Row>
                         {this.state.movies.map((movie => {
-                            return <MovieThumb key={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
+                            return <MovieThumb key={movie.id} id={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} goToPage={this.props.goToPage} />
                         }))}
                     </Row>
                 </Container>

@@ -10,7 +10,7 @@ import "../App.scss";
 const MovieThumb = props => {
 
     const posterImg = props.baseUrl + props.smPosterSize + props.posterPath;
-    const date = props.date;
+    const { name, date } = props;
     const formattedDate = format(date.replace("-", "/"), "MMMM YYYY");
     const ratingPercent = props.voteRating * 10;
     const RatingBadge = () => {
@@ -25,11 +25,11 @@ const MovieThumb = props => {
 
     return (
         <Col xs={6} lg={3} className="movie-thumb-wrapper">
-            <div className="thumb-img-wrapper">
-                <img src={posterImg} alt={props.name + " Poster"} className="img-fluid movie-thumb-img" />
+            <div className="thumb-img-wrapper" onClick={() => { props.goToPage("/movie/" + encodeURI(name) + "/" + props.id) }}>
+                <img src={posterImg} alt={name + " Poster"} className="img-fluid movie-thumb-img" />
                 <RatingBadge />
             </div>
-            <p className="movie-name">{props.name}</p>
+            <p className="movie-name">{name}</p>
             <p className="release-date">{formattedDate}</p>
         </Col>
     )

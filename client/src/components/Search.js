@@ -50,7 +50,7 @@ class Search extends Component {
                             <Col><p>No results found for "{this.state.searchQuery}"</p></Col>
                         }
                         {this.state.searchResults && this.state.searchResults.map((movie) => {
-                            return <MovieThumb key={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
+                            return <MovieThumb key={movie.id} id={movie.id} name={movie.original_title} voteRating={movie.vote_average} date={movie.release_date} baseUrl={this.props.baseUrl} smPosterSize={this.props.smPosterSize} posterPath={movie.poster_path} />
                         })}
                     </Row>
                 </Container>
