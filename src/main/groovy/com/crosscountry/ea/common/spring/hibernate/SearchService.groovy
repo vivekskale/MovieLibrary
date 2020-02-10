@@ -1,4 +1,4 @@
-package com.ccrn.common.spring.hibernate
+package com.crosscountry.ea.common.spring.hibernate
 
 import groovy.util.logging.Slf4j
 import org.apache.lucene.queryparser.classic.ParseException

@@ -6,9 +6,13 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.ccrn.common'
-version = '0.0.1'
+group = 'com.crosscountry.ea.common'
+version = '0.0.2'
 sourceCompatibility = '1.8'
+
+ext {
+    dotenv = { def props = new Properties(); props.load(new File("../.env").newInputStream()); return props }.call()
+}
 
 repositories {
     mavenCentral()
@@ -58,11 +62,9 @@ publishing {
                     value = System.getenv("CI_JOB_TOKEN")
                 }
             } else {
-                def properties = new Properties()
-                properties.load(new File("../.env").newInputStream())
                 credentials(HttpHeaderCredentials) {
                     name = "Private-Token"
-                    value = properties.get("GITLAB_PRIVATE_TOKEN")
+                    value = dotenv.get("GITLAB_PRIVATE_TOKEN")
                 }
             }
             authentication {
