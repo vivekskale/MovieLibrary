@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'groovy'
+    id 'maven'
     id 'maven-publish'
 }
 
@@ -30,30 +31,43 @@ dependencies {
     implementation "io.springfox:springfox-swagger2:$swaggerVersion"
 }
 
-springBoot {
-    buildInfo()
+jar {
+    enabled = true
+}
+
+bootJar {
+    enabled = false
 }
 
 publishing {
-        repositories {
-            maven {
-                url "https://gitlab.com/api/v4/projects/16748301/packages/maven"
-                if (System.getenv("CI_JOB_TOKEN")) {
-                    credentials(HttpHeaderCredentials) {
-                        name = "Job-Token"
-                        value = System.getenv("CI_JOB_TOKEN")
-                    }
-                } else {
-                    def properties = new Properties()
-                    properties.load(new File("../.env").newInputStream())
-                    credentials(HttpHeaderCredentials) {
-                        name = "Private-Token"
-                        value = properties.get("GITLAB_PRIVATE_TOKEN")
-                    }
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "https://gitlab.com/api/v4/projects/16748301/packages/maven"
+            if (System.getenv("CI_JOB_TOKEN")) {
+                credentials(HttpHeaderCredentials) {
+                    name = "Job-Token"
+                    value = System.getenv("CI_JOB_TOKEN")
                 }
-                authentication {
-                    header(HttpHeaderAuthentication)
+            } else {
+                def properties = new Properties()
+                properties.load(new File("../.env").newInputStream())
+                credentials(HttpHeaderCredentials) {
+                    name = "Private-Token"
+                    value = properties.get("GITLAB_PRIVATE_TOKEN")
                 }
             }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
         }
+    }
 }
