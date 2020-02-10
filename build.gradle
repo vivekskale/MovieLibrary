@@ -1,0 +1,59 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'groovy'
+    id 'maven-publish'
+}
+
+group = 'com.ccrn.common'
+version = '0.0.1'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local/" }
+}
+
+dependencies {
+    implementation "org.codehaus.groovy:groovy:$groovyVersion"
+    // Hibernate Search
+    implementation "org.hibernate:hibernate-search-engine:${hibernateSearchVersion}", {
+        exclude module: 'jboss-logging'
+    }
+    implementation "org.hibernate:hibernate-search-orm:${hibernateSearchVersion}", {
+        exclude module: 'jboss-logging'
+    }
+    implementation "org.hibernate:hibernate-search-elasticsearch:${hibernateSearchVersion}", {
+        exclude module: 'jboss-logging'
+    }
+    // Swagger / OpenAPI
+    implementation "io.springfox:springfox-swagger2:$swaggerVersion"
+}
+
+springBoot {
+    buildInfo()
+}
+
+publishing {
+        repositories {
+            maven {
+                url "https://gitlab.com/api/v4/projects/16748301/packages/maven"
+                if (System.getenv("CI_JOB_TOKEN")) {
+                    credentials(HttpHeaderCredentials) {
+                        name = "Job-Token"
+                        value = System.getenv("CI_JOB_TOKEN")
+                    }
+                } else {
+                    def properties = new Properties()
+                    properties.load(new File("../.env").newInputStream())
+                    credentials(HttpHeaderCredentials) {
+                        name = "Private-Token"
+                        value = properties.get("GITLAB_PRIVATE_TOKEN")
+                    }
+                }
+                authentication {
+                    header(HttpHeaderAuthentication)
+                }
+            }
+        }
+}
