@@ -30,5 +30,5 @@ Gradle integration
     }
     
     dependencies {
-        implementation "com.ccrn.common:lib-common-spring:${VERSION}"
+        implementation "com.crosscountry.ea.common:lib-common-spring:${VERSION}"
     }
