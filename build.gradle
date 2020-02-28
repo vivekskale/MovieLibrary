@@ -55,7 +55,7 @@ publishing {
     }
     repositories {
         maven {
-            url "https://gitlab.com/api/v4/projects/16748301/packages/maven"
+            url "https://gitlab.com/api/v4/projects/17195343/packages/maven"
             if (System.getenv("CI_JOB_TOKEN")) {
                 credentials(HttpHeaderCredentials) {
                     name = "Job-Token"
